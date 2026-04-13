@@ -1,0 +1,33 @@
+include "/Users/retr0/.nano/*.nanorc"
+
+## UI / usability
+set linenumbers
+set tabsize 4
+set tabstospaces
+set autoindent
+set mouse
+set multibuffer
+set historylog
+set constantshow
+set softwrap
+
+## Behavior
+set backup
+set historylog
+set multibuffer
+## set rebinddelete
+
+## Search
+set casesensitive
+
+## UI colors (VS Code-ish dark vibe)
+set titlecolor brightwhite,black
+set statuscolor brightwhite,blue
+set keycolor brightcyan
+set functioncolor brightgreen
+set numbercolor brightblack
+set selectedcolor black,yellow
+
+
+## Show whitespace (optional)
+set whitespace "· "
