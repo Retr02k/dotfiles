@@ -1,4 +1,4 @@
-include "$HOME/.nano/*.nanorc"
+include "~/.nano/*.nanorc"
 
 ## UI / usability
 set linenumbers
