@@ -20,7 +20,7 @@ ln -sf "$DOTFILES_DIR/.nanorc" "$HOME/.nanorc"
 # CREATE REQUIRED DIRECTORIES
 # =========================================================
 
-echo "📁 Creating required directories..."
+echo "Creating required directories..."
 
 mkdir -p "$HOME/.nano/backups"
 mkdir -p "$HOME/.tmux/plugins"

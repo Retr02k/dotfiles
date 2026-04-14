@@ -1,5 +1,5 @@
 # =========================================================
-# 🖥️ OS DETECTION (macOS vs Linux)
+# OS DETECTION (macOS vs Linux)
 # =========================================================
 # We detect the OS so we can apply different configs when needed
 
@@ -23,7 +23,7 @@ fi
 
 
 # =========================================================
-# 📦 PATH CONFIGURATION (CROSS-PLATFORM SAFE)
+# PATH CONFIGURATION (CROSS-PLATFORM SAFE)
 # =========================================================
 
 # Local user binaries (pipx, npm, etc.)
@@ -42,7 +42,7 @@ fi
 
 
 # =========================================================
-# 🧩 OH MY ZSH CONFIG
+# OH MY ZSH CONFIG
 # =========================================================
 
 # Path to Oh My Zsh installation
@@ -59,7 +59,7 @@ source $ZSH/oh-my-zsh.sh
 
 
 # =========================================================
-# 🌍 ENVIRONMENT VARIABLES
+# ENVIRONMENT VARIABLES
 # =========================================================
 
 export LANG=en_US.UTF-8
@@ -78,7 +78,7 @@ alias setup="cd ~/dotfiles && git pull && ./install.sh && source ~/.zshrc"
 
 
 # =========================================================
-# 🎨 POWERLEVEL10K CONFIG
+# POWERLEVEL10K CONFIG
 # =========================================================
 # Load prompt config if it exists
 
@@ -86,7 +86,7 @@ alias setup="cd ~/dotfiles && git pull && ./install.sh && source ~/.zshrc"
 
 
 # =========================================================
-# 🔧 ESP-IDF HELPER FUNCTION
+# ESP-IDF HELPER FUNCTION
 # =========================================================
 # Makes ESP-IDF easier to use
 
@@ -107,7 +107,7 @@ idf() {
 
 
 # =========================================================
-# 🟢 NODE / NVM SETUP (SAFE VERSION)
+# NODE / NVM SETUP (SAFE VERSION)
 # =========================================================
 # Only loads if NVM is installed
 
@@ -122,7 +122,7 @@ load_nvm() {
 
 
 # =========================================================
-# ⚡ LAZY LOADING (SAFE VERSION)
+# LAZY LOADING (SAFE VERSION)
 # =========================================================
 # Loads Node tools only when needed
 # Prevents startup slowdown AND avoids crashes if not installed
@@ -147,7 +147,7 @@ lazy_load() {
 
 
 # =========================================================
-# 🤖 LAZY-LOADED COMMANDS
+# LAZY-LOADED COMMANDS
 # =========================================================
 # Only define these if NVM exists
 
@@ -160,7 +160,7 @@ fi
 
 
 # =========================================================
-# 🧩 OPTIONAL: PLATFORM-SPECIFIC FILES
+# OPTIONAL: PLATFORM-SPECIFIC FILES
 # =========================================================
 # Keeps your config clean and modular
 
