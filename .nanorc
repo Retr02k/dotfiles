@@ -1,33 +1,56 @@
+# =========================================================
+# SYNTAX HIGHLIGHTING FILES
+# =========================================================
+# Load all syntax definitions
+
 include "~/.nano/*.nanorc"
 
-## UI / usability
-set linenumbers
-set tabsize 4
-set tabstospaces
-set autoindent
-set mouse
-set multibuffer
-set historylog
-set constantshow
-set softwrap
 
-## Behavior
+# =========================================================
+# UI / USABILITY
+# =========================================================
+
+set linenumbers          # Show line numbers
+set tabsize 4            # Tabs = 4 spaces
+set tabstospaces         # Convert tabs to spaces
+set autoindent           # Keep indentation
+set mouse                # Enable mouse support
+set multibuffer          # Allow multiple open files
+set historylog           # Save search/command history
+set constantshow         # Show cursor position
+set softwrap             # Wrap long lines
+
+
+# =========================================================
+# BEHAVIOR
+# =========================================================
+
 set backup
-set historylog
-set multibuffer
-## set rebinddelete
+set backupdir "~/.nano/backups"       # Store backups in one place
+set unix                              # Use Unix line endings
 
-## Search
+
+# =========================================================
+# SEARCH
+# =========================================================
+
 set casesensitive
 
-## UI colors (VS Code-ish dark vibe)
+
+# =========================================================
+# COLORS
+# =========================================================
+
 set titlecolor brightwhite,black
 set statuscolor brightwhite,blue
 set keycolor brightcyan
 set functioncolor brightgreen
-set numbercolor brightblack
+set numbercolor white
 set selectedcolor black,yellow
 
 
-## Show whitespace (optional)
+# =========================================================
+# WHITESPACE VISIBILITY
+# =========================================================
+
 set whitespace "· "

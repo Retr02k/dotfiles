@@ -1,150 +1,173 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
+# =========================================================
+# 🖥️ OS DETECTION (macOS vs Linux)
+# =========================================================
+# We detect the OS so we can apply different configs when needed
+
+OS="$(uname)"
+
+if [[ "$OS" == "Darwin" ]]; then
+  export PLATFORM="macos"
+elif [[ "$OS" == "Linux" ]]; then
+  export PLATFORM="linux"
+fi
+
+
+# =========================================================
+# ⚡ POWERLEVEL10K INSTANT PROMPT (must stay near top)
+# =========================================================
+# Speeds up shell startup by preloading part of the prompt
+
 if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
 fi
 
-# If you come from bash you might have to change your $PATH.
-# export PATH=$HOME/bin:$HOME/.local/bin:/usr/local/bin:$PATH
 
-# Path to your Oh My Zsh installation.
+# =========================================================
+# 📦 PATH CONFIGURATION (CROSS-PLATFORM SAFE)
+# =========================================================
+
+# Local user binaries (pipx, npm, etc.)
+export PATH="$HOME/.local/bin:$PATH"
+
+# macOS-specific paths
+if [[ "$PLATFORM" == "macos" ]]; then
+  export PATH="/usr/local/bin:$PATH"
+fi
+
+# (Optional) Linux-specific paths
+if [[ "$PLATFORM" == "linux" ]]; then
+  # Add anything specific to 42 machines here if needed
+  :
+fi
+
+
+# =========================================================
+# 🧩 OH MY ZSH CONFIG
+# =========================================================
+
+# Path to Oh My Zsh installation
 export ZSH="$HOME/.oh-my-zsh"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time Oh My Zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+# Theme
 ZSH_THEME="powerlevel10k/powerlevel10k"
 
-# Set list of themes to pick from when loading at random
-# Setting this variable when ZSH_THEME=random will cause zsh to load
-# a theme from this variable instead of looking in $ZSH/themes/
-# If set to an empty array, this variable will have no effect.
-# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
-
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
-
-# Uncomment the following line to use hyphen-insensitive completion.
-# Case-sensitive completion must be off. _ and - will be interchangeable.
-# HYPHEN_INSENSITIVE="true"
-
-# Uncomment one of the following lines to change the auto-update behavior
-# zstyle ':omz:update' mode disabled  # disable automatic updates
-# zstyle ':omz:update' mode auto      # update automatically without asking
-# zstyle ':omz:update' mode reminder  # just remind me to update when it's time
-
-# Uncomment the following line to change how often to auto-update (in days).
-# zstyle ':omz:update' frequency 13
-
-# Uncomment the following line if pasting URLs and other text is messed up.
-# DISABLE_MAGIC_FUNCTIONS="true"
-
-# Uncomment the following line to disable colors in ls.
-# DISABLE_LS_COLORS="true"
-
-# Uncomment the following line to disable auto-setting terminal title.
-# DISABLE_AUTO_TITLE="true"
-
-# Uncomment the following line to enable command auto-correction.
-# ENABLE_CORRECTION="true"
-
-# Uncomment the following line to display red dots whilst waiting for completion.
-# You can also set it to another string to have that shown instead of the default red dots.
-# e.g. COMPLETION_WAITING_DOTS="%F{yellow}waiting...%f"
-# Caution: this setting can cause issues with multiline prompts in zsh < 5.7.1 (see #5765)
-# COMPLETION_WAITING_DOTS="true"
-
-# Uncomment the following line if you want to disable marking untracked files
-# under VCS as dirty. This makes repository status check for large repositories
-# much, much faster.
-# DISABLE_UNTRACKED_FILES_DIRTY="true"
-
-# Uncomment the following line if you want to change the command execution time
-# stamp shown in the history command output.
-# You can set one of the optional three formats:
-# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
-# HIST_STAMPS="mm/dd/yyyy"
-
-# Would you like to use another custom folder than $ZSH/custom?
-# ZSH_CUSTOM=/path/to/new-custom-folder
-
-# Which plugins would you like to load?
-# Standard plugins can be found in $ZSH/plugins/
-# Custom plugins may be added to $ZSH_CUSTOM/plugins/
-# Example format: plugins=(rails git textmate ruby lighthouse)
-# Add wisely, as too many plugins slow down shell startup.
+# Plugins (keep minimal for performance)
 plugins=(git)
 
+# Load Oh My Zsh
 source $ZSH/oh-my-zsh.sh
 
-# User configuration
 
-# export MANPATH="/usr/local/man:$MANPATH"
+# =========================================================
+# 🌍 ENVIRONMENT VARIABLES
+# =========================================================
 
-# You may need to manually set your language environment
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
-# Preferred editor for local and remote sessions
+
+# Default editor
 export EDITOR=nano
 
-# Compilation flags
-# export ARCHFLAGS="-arch $(uname -m)"
 
-# Set personal aliases, overriding those provided by Oh My Zsh libs,
-# plugins, and themes. Aliases can be placed here, though Oh My Zsh
-# users are encouraged to define aliases within a top-level file in
-# the $ZSH_CUSTOM folder, with .zsh extension. Examples:
-# - $ZSH_CUSTOM/aliases.zsh
-# - $ZSH_CUSTOM/macos.zsh
-# For a full list of active aliases, run `alias`.
-#
-# Example aliases
-# alias zshconfig="mate ~/.zshrc"
-# alias ohmyzsh="mate ~/.oh-my-zsh"
+# =========================================================
+# ⚡ ALIASES
+# =========================================================
+
+# Update dotfiles and reload shell
 alias setup="cd ~/dotfiles && git pull && ./install.sh && source ~/.zshrc"
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
-# ESP-IDF helper function
-# This function simplifies usage of ESP-IDF by:
-# 1. Activating the Python virtual environment (required for dependencies)
-# 2. Loading ESP-IDF environment variables (so idf.py and toolchain work)
-# 3. Forwarding any arguments to idf.py (e.g., "idf build", "idf flash")
-#
-# Without this, you'd need to manually run:
-#   source ~/esp/venv/bin/activate
-#   . ~/esp/esp-idf/export.sh
-#   idf.py <command>
-#
-# This lets you just type: idf <command>
+
+# =========================================================
+# 🎨 POWERLEVEL10K CONFIG
+# =========================================================
+# Load prompt config if it exists
+
+[[ -f ~/.p10k.zsh ]] && source ~/.p10k.zsh
+
+
+# =========================================================
+# 🔧 ESP-IDF HELPER FUNCTION
+# =========================================================
+# Makes ESP-IDF easier to use
+
 idf() {
+  # Load ESP-IDF environment if not already loaded
   if [ -z "$IDF_PATH" ]; then
-    . ~/esp/esp-idf/export.sh
+    . "$HOME/esp/esp-idf/export.sh"
   fi
-[[ "$VIRTUAL_ENV" != "$HOME/esp/venv" ]] && source ~/esp/venv/bin/activate
+
+  # Activate Python virtual environment if needed
+  if [[ "$VIRTUAL_ENV" != "$HOME/esp/venv" ]]; then
+    source "$HOME/esp/venv/bin/activate"
+  fi
+
+  # Run idf.py with all passed arguments
   idf.py "$@"
 }
 
-# Created by `pipx` on 2026-03-30 10:55:01
-export PATH="$PATH:/Users/retr0/.local/bin"
-export PATH="/usr/local/bin:$PATH"
+
+# =========================================================
+# 🟢 NODE / NVM SETUP (SAFE VERSION)
+# =========================================================
+# Only loads if NVM is installed
+
 load_nvm() {
   export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+
+  # Load nvm only if it exists
+  if [[ -s "$NVM_DIR/nvm.sh" ]]; then
+    . "$NVM_DIR/nvm.sh"
+  fi
 }
+
+
+# =========================================================
+# ⚡ LAZY LOADING (SAFE VERSION)
+# =========================================================
+# Loads Node tools only when needed
+# Prevents startup slowdown AND avoids crashes if not installed
 
 lazy_load() {
   local cmd="$1"
+
+  # Remove the function wrapper so next call is direct
   unset -f "$cmd"
+
+  # Load Node environment
   load_nvm
-  "$cmd" "${@:2}"
+
+  # Check if command exists before running it
+  if command -v "$cmd" >/dev/null 2>&1; then
+    "$cmd" "${@:2}"
+  else
+    echo "$cmd is not installed"
+    return 127
+  fi
 }
 
-copilot() { lazy_load copilot "$@"; }
-node()    { lazy_load node "$@"; }
-npm()     { lazy_load npm "$@"; }
-npx()     { lazy_load npx "$@"; }
+
+# =========================================================
+# 🤖 LAZY-LOADED COMMANDS
+# =========================================================
+# Only define these if NVM exists
+
+if [[ -d "$HOME/.nvm" ]]; then
+  copilot() { lazy_load copilot "$@"; }
+  node()    { lazy_load node "$@"; }
+  npm()     { lazy_load npm "$@"; }
+  npx()     { lazy_load npx "$@"; }
+fi
+
+
+# =========================================================
+# 🧩 OPTIONAL: PLATFORM-SPECIFIC FILES
+# =========================================================
+# Keeps your config clean and modular
+
+if [[ "$PLATFORM" == "macos" && -f ~/.zshrc.macos ]]; then
+  source ~/.zshrc.macos
+fi
+
+if [[ "$PLATFORM" == "linux" && -f ~/.zshrc.linux ]]; then
+  source ~/.zshrc.linux
+fi
