@@ -39,4 +39,3 @@ fi
 # =========================================================
 
 echo "Dotfiles setup complete!"
-echo "Restart your terminal or run: source ~/.zshrc"
