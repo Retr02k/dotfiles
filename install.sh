@@ -16,10 +16,11 @@ echo "Creating required directories and symlinks..."
 mkdir -p "$HOME/.nano/backups"
 mkdir -p "$HOME/.tmux/plugins"
 mkdir -p "$HOME/.configs"
+mkdir -p "$HOME/.var/app/io.neovim.nvim/config"
 ln -sf "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
 ln -sf "$DOTFILES_DIR/.tmux.conf" "$HOME/.tmux.conf"
 ln -sf "$DOTFILES_DIR/.nanorc" "$HOME/.nanorc"
-ln -sfn "$DOTFILES_DIR/nvim" "$HOME/.configs/nvim"
+ln -sfn "$HOME/dotfiles/nvim" "$HOME/.var/app/io.neovim.nvim/config/nvim"
 
 # =========================================================
 # INSTALL TPM (Tmux Plugin Manager) IF MISSING
