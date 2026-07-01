@@ -66,8 +66,8 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 # Default editor
-export EDITOR=nano
-
+export EDITOR="nvim"
+export VISUAL="nvim"
 
 # =========================================================
 # ALIASES
@@ -176,4 +176,3 @@ export UV_CACHE_DIR=/goinfre/$USER/.cache/uv
 export XDG_CACHE_HOME=/goinfre/$USER/.cache
 export TMPDIR=/goinfre/$USER/tmp
 export UV_PROJECT_ENVIRONMENT=/goinfre/$USER/venv-callme
-alias nvim="flatpak run io.neovim.nvim"

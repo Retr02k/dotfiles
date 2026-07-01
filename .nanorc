@@ -3,54 +3,54 @@
 # =========================================================
 # Load all syntax definitions
 
-include "~/.nano/*.nanorc"
+#include "~/.nano/*.nanorc"
 
 
 # =========================================================
 # UI / USABILITY
 # =========================================================
 
-set linenumbers          # Show line numbers
-set tabsize 4            # Tabs = 4 spaces
-set tabstospaces         # Convert tabs to spaces
-set autoindent           # Keep indentation
-set mouse                # Enable mouse support
-set multibuffer          # Allow multiple open files
-set historylog           # Save search/command history
-set constantshow         # Show cursor position
-set softwrap             # Wrap long lines
+#set linenumbers          # Show line numbers
+#set tabsize 4            # Tabs = 4 spaces
+#set tabstospaces         # Convert tabs to spaces
+#set autoindent           # Keep indentation
+#set mouse                # Enable mouse support
+#set multibuffer          # Allow multiple open files
+#set historylog           # Save search/command history
+#set constantshow         # Show cursor position
+#set softwrap             # Wrap long lines
 
 
 # =========================================================
 # BEHAVIOR
 # =========================================================
 
-set backup
-set backupdir "~/.nano/backups"       # Store backups in one place
-set unix                              # Use Unix line endings
+#set backup
+#set backupdir "~/.nano/backups"       # Store backups in one place
+#set unix                              # Use Unix line endings
 
 
 # =========================================================
 # SEARCH
 # =========================================================
 
-set casesensitive
+#set casesensitive
 
 
 # =========================================================
 # COLORS
 # =========================================================
 
-set titlecolor brightwhite,black
-set statuscolor brightwhite,blue
-set keycolor brightcyan
-set functioncolor brightgreen
-set numbercolor white
-set selectedcolor black,yellow
+#set titlecolor brightwhite,black
+#set statuscolor brightwhite,blue
+#set keycolor brightcyan
+#set functioncolor brightgreen
+#set numbercolor white
+#set selectedcolor black,yellow
 
 
 # =========================================================
 # WHITESPACE VISIBILITY
 # =========================================================
 
-set whitespace "· "
+#set whitespace "· "

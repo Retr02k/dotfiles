@@ -7,25 +7,19 @@ echo "Setting up dotfiles..."
 DOTFILES_DIR="$HOME/dotfiles"
 
 # =========================================================
-# SYMLINK FILES
+# CREATE REQUIRED DIRECTORIES AND
+# CREATING REQUIRES SYMLINKS
 # =========================================================
 
-echo "Creating symlinks..."
-
-ln -sf "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
-ln -sf "$DOTFILES_DIR/.tmux.conf" "$HOME/.tmux.conf"
-ln -sf "$DOTFILES_DIR/.nanorc" "$HOME/.nanorc"
-ln -sfn "$DORFILES_DIR/nvim" "$HOME/.config/nvim"
-
-# =========================================================
-# CREATE REQUIRED DIRECTORIES
-# =========================================================
-
-echo "Creating required directories..."
+echo "Creating required directories and symlinks..."
 
 mkdir -p "$HOME/.nano/backups"
 mkdir -p "$HOME/.tmux/plugins"
 mkdir -p "$HOME/.configs"
+ln -sf "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
+ln -sf "$DOTFILES_DIR/.tmux.conf" "$HOME/.tmux.conf"
+ln -sf "$DOTFILES_DIR/.nanorc" "$HOME/.nanorc"
+ln -sfn "$DOTFILES_DIR/nvim" "$HOME/.configs/nvim"
 
 # =========================================================
 # INSTALL TPM (Tmux Plugin Manager) IF MISSING
