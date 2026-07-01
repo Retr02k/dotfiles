@@ -171,3 +171,9 @@ fi
 if [[ "$PLATFORM" == "linux" && -f ~/.zshrc.linux ]]; then
   source ~/.zshrc.linux
 fi
+
+export UV_CACHE_DIR=/goinfre/$USER/.cache/uv
+export XDG_CACHE_HOME=/goinfre/$USER/.cache
+export TMPDIR=/goinfre/$USER/tmp
+export UV_PROJECT_ENVIRONMENT=/goinfre/$USER/venv-callme
+alias nvim="flatpak run io.neovim.nvim"

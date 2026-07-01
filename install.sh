@@ -15,6 +15,7 @@ echo "Creating symlinks..."
 ln -sf "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
 ln -sf "$DOTFILES_DIR/.tmux.conf" "$HOME/.tmux.conf"
 ln -sf "$DOTFILES_DIR/.nanorc" "$HOME/.nanorc"
+ln -sfn "$DORFILES_DIR/nvim" "$HOME/.config/nvim"
 
 # =========================================================
 # CREATE REQUIRED DIRECTORIES
@@ -24,6 +25,7 @@ echo "Creating required directories..."
 
 mkdir -p "$HOME/.nano/backups"
 mkdir -p "$HOME/.tmux/plugins"
+mkdir -p "$HOME/.configs"
 
 # =========================================================
 # INSTALL TPM (Tmux Plugin Manager) IF MISSING
