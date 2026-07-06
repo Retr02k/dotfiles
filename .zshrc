@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 # =========================================================
 # OS DETECTION
 # =========================================================
@@ -98,3 +105,5 @@ export UV_CACHE_DIR=/goinfre/$USER/.cache/uv
 export XDG_CACHE_HOME=/goinfre/$USER/.cache
 export TMPDIR=/goinfre/$USER/tmp
 export UV_PROJECT_ENVIRONMENT=/goinfre/$USER/venv-callme
+export LS_COLORS='di=1;36:fi=0:ln=1;35:ex=1;32:or=1;31:mi=0;31:pi=1;33:so=1;33:bd=1;33:cd=1;33'
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}

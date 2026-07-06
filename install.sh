@@ -12,37 +12,49 @@ echo "Setting up dotfiles..."
 
 mkdir -p "$HOME/.nano/backups"
 mkdir -p "$HOME/.tmux/plugins"
+mkdir -p "$HOME/.config"
 
 # =========================================================
-# SYMLINKS
+# HELPER FUNCTION (safe symlink)
 # =========================================================
 
-ln -sf "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
-ln -sf "$DOTFILES_DIR/.tmux.conf" "$HOME/.tmux.conf"
-ln -sf "$DOTFILES_DIR/.nanorc" "$HOME/.nanorc"
+link() {
+  SRC="$1"
+  DEST="$2"
 
-mkdir -p "$HOME/.var/app/io.neovim.nvim/config"
-ln -sfn "$DOTFILES_DIR/nvim" \
-  "$HOME/.var/app/io.neovim.nvim/config/nvim"
+  if [ -e "$DEST" ] || [ -L "$DEST" ]; then
+    rm -rf "$DEST"
+  fi
+
+  ln -s "$SRC" "$DEST"
+}
 
 # =========================================================
-# TPM
+# CORE SYMLINKS
+# =========================================================
+
+echo "Linking zsh..."
+link "$DOTFILES_DIR/.zshrc" "$HOME/.zshrc"
+
+echo "Linking tmux..."
+link "$DOTFILES_DIR/.tmux.conf" "$HOME/.tmux.conf"
+
+echo "Linking nanorc..."
+link "$DOTFILES_DIR/.nanorc" "$HOME/.nanorc"
+
+echo "Linking neovim..."
+link "$DOTFILES_DIR/nvim" "$HOME/.config/nvim"
+
+# =========================================================
+# TPM (Tmux Plugin Manager)
 # =========================================================
 
 if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
   echo "Installing TPM..."
-  git clone https://github.com/tmux-plugins/tpm "$HOME/.tmux/plugins/tpm"
-fi
-
-# =========================================================
-# FLATPAK NEOVIM CONFIG
-# =========================================================
-
-if command -v flatpak >/dev/null 2>&1; then
-  echo "Configuring Flatpak Neovim..."
-
-  flatpak override --user io.neovim.nvim \
-    --env=PATH="/home/psilva-p/.nvm/versions/node/v24.18.0/bin:/home/psilva-p/.npm-global/bin:/app/bin:/usr/bin"
+  git clone https://github.com/tmux-plugins/tpm \
+    "$HOME/.tmux/plugins/tpm"
+else
+  echo "TPM already installed"
 fi
 
 echo "Dotfiles setup complete."
