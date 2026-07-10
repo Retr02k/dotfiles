@@ -25,4 +25,14 @@ vim.opt.smartcase = true         -- Case-sensitive if uppercase letters are used
 vim.opt.splitbelow = true        -- New horizontal splits open below current window
 vim.opt.splitright = true        -- New vertical splits open to the right
 
-vim.opt.scrolloff = 8            -- Keeps 8 lines visible above/below cursor when scrolling
+vim.opt.scrolloff = 8            -- Keeps 8 lines visible above/below cursor when scrollinog
+
+vim.opt.list = true
+vim.opt.listchars = {
+    space = "·",      -- spaces
+    tab = "→ ",       -- tabs
+    trail = "•",      -- trailing spaces
+    extends = "❯",
+    precedes = "❮",
+    nbsp = "␣",
+}
