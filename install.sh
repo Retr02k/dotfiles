@@ -164,6 +164,10 @@ link "$DOTFILES_DIR/.nanorc" "$HOME/.nanorc"
 echo "Linking neovim..."
 link "$DOTFILES_DIR/nvim" "$HOME/.config/nvim"
 
+
+echo "Linking p10k config..."
+link "$DOTFILES_DIR/.p10k.zsh" "$HOME/.p10k.zsh"
+
 # =========================================================
 # TPM (Tmux Plugin Manager)
 # =========================================================
