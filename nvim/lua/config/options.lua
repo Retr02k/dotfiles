@@ -9,13 +9,26 @@ vim.opt.cursorline = true        -- Highlights the current line where the cursor
 vim.opt.signcolumn = "yes"       -- Always shows the sign column (prevents text shifting)
 
 
-vim.opt.expandtab = false        -- Use real tabs instead of spaces
+vim.opt.expandtab = true        -- Use real tabs instead of spaces
 vim.opt.shiftwidth = 4           -- Number of spaces used for each indentation level
 vim.opt.tabstop = 4              -- Number of spaces a tab character looks like
 vim.opt.shiftround = true        -- Rounds indentation to nearest shiftwidth
 vim.opt.smartindent = true       -- Automatically indents based on syntax/structure
 
 vim.opt.mouse = "a"              -- Enables mouse support in all modes
+
+vim.g.clipboard = {
+	name = "wl-clipboard",
+	copy = {
+		["+"] = "wl-copy",
+		["*"] = "wl-copy"
+	},
+	paste = {
+		["+"] = "wl-paste --no-newline",
+		["*"] = "wl-paste --no-newline",
+	},
+	cache_enabled = 0,
+}
 
 vim.opt.clipboard = "unnamedplus" -- Uses system clipboard for copy/paste
 
